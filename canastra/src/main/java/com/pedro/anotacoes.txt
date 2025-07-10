@@ -1,0 +1,78 @@
+canastra
+
+
+entrada: numero de jogaodores  no maximo 3
+	1 classe abstrata carta (numero e naipe)
+	4 classes filhas de carta para cada naipe
+	
+	multiplicar por 2 para ter as 52 cartas
+	embaralha (cria uma ordem)
+	distribui de cima para baixo
+	exibe as cartas que sobrarem na ordem
+
+baralho:
+	embaralha
+	distribui
+
+pontos:
+	carta normal
+	coringa
+
+
+saida: as cartas de cada jogador e o baralho e a pontuacao por jogador
+
+
+cartas jogador 1: 4C, 7O, 3E, 2P
+pontuacao jogador 1: 3
+
+joagdor ...
+
+baralho:
+
+
+
+
+
+🃏 Carta (classe abstrata)
+* Atributos:
+    * numero (ex: "4", "A", "K", "Coringa")
+    * naipe (ex: "Copas", "Espadas", etc.)
+* Métodos:
+    * getAbreviacaoNaipe() → retorna "C", "E", "O", "P"
+    * getCartaCompacta() → retorna 4C, 7O, etc.
+    * getPontos() → método abstrato (para polimorfismo)
+
+♠ CartaCopas, CartaEspadas, CartaOuros, CartaPaus
+    * Herdam de Carta
+* Implementam o método getPontos() com lógica polimórfica
+    * Exemplo: cartas normais valem 5 pontos, coringa 20
+
+🎴 Baralho
+* Atributo:
+    * cartas: ArrayList<Carta>
+* Responsabilidades:
+    * Criar 52 cartas (13 valores × 4 naipes)
+    * Duplicar para 104 cartas
+    * Embaralhar (Collections.shuffle)
+    * Distribuir cartas para jogadores
+    * Exibir as cartas restantes
+
+👤 Jogador
+* Atributos:
+    * nome
+    * mao: ArrayList<Carta>
+* Métodos:
+    * receberCartas(List<Carta>)
+    * calcularPontos() → soma usando polimorfismo
+    * mostrarCartasCompactas() → exibe como: 4C, 7O, 3E, 2P
+    * getPontos() → retorna total de pontos
+
+🕹️ Main
+* Responsável por:
+    * Capturar o número de jogadores via Scanner (1 a 3)
+    * Criar o baralho e jogadores
+    * Distribuir cartas (ex: 11 para cada jogador)
+    * Exibir:
+        * Cartas de cada jogador no formato abreviado (ex: 5C, 10P, ...)
+        * Pontuação total de cada jogador
+        * Cartas restantes no baralho (opcionalmente também no formato compacto)
