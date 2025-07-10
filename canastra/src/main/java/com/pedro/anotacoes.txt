@@ -18,7 +18,14 @@ pontos:
 	carta normal
 	coringa
 
+classe jogo
+    contar a pontuacao no jogo
+    sortear, Distribuir 
+    abs clase jogo gen jogo com coringa e sem coringa
+    escolhe na main o que fazer
+    jogo sem -> muda o meotodo de distrubuir e sortear cartas
 
+    
 saida: as cartas de cada jogador e o baralho e a pontuacao por jogador
 
 

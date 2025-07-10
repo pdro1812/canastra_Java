@@ -18,25 +18,4 @@ public class Jogador {
         mao.addAll(cartas);
     };
 
-        public int calcularPontos() {
-        int total = 0;
-        for (Carta c : mao) {
-            total += c.getPontos();
-        }
-        return total;
-    }
-
-    public void mostrarCartasCompactas() {
-        System.out.print(nome + ": ");
-        for (Carta c : mao) {
-            System.out.print(c.getAbreviada() + ", ");
-        }
-        System.out.println(); 
-    }
-
-    public int getPontos() {
-        return calcularPontos();
-    }
-
-
 }
