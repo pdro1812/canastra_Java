@@ -18,25 +18,40 @@ public class Main {
         for (int i = 1; i <= numJogadores; i++) {
             jogadores.add(new Jogador("Jogador " + i));
         }
-
-        JogoComCoringa jogoComCoringa = new JogoComCoringa(13, jogadores);
         
+        int cartasPorJogador = 13;
+
+        System.out.println("        JOGO COM CORINGA");
+        System.out.println("__________________________________");
+        
+        JogoComCoringa jogoComCoringa = new JogoComCoringa(cartasPorJogador, jogadores);
+        executarRodada(jogoComCoringa);
+
+
+        System.out.println("        JOGO SEM CORINGA");
+        System.out.println("__________________________________");
+
+        JogoSemCoringa jogoSemCoringa = new JogoSemCoringa(cartasPorJogador, jogadores);
+        executarRodada(jogoSemCoringa);
+
+
+        sc.close();
+    }
+
+    public static void executarRodada(Jogo jogo) {
         System.out.println("\nEmbaralhando e distribuindo as cartas...");
-        jogoComCoringa.embaralhar();
-        jogoComCoringa.distribuir();
+        jogo.embaralhar();
+        jogo.distribuir();
+        jogo.calcularPontos();
 
-        jogoComCoringa.calcularPontos();
+        System.out.println("\n--- RESULTADO DA RODADA ---");
 
-        System.out.println("\n--- RESULTADO FINAL ---");
-
-        for (Jogador jogador : jogadores) {
+        for (Jogador jogador : jogo.jogadores) {
             System.out.println("\nJogador: " + jogador.getNome());
             System.out.println("Mão: " + jogador.getMao());
             System.out.println("Pontuação Total: " + jogador.getPontos());
         }
         
-        System.out.println("\nCartas restantes no baralho: " + jogoComCoringa.getCartasRestantes().size());
-
-        sc.close();
+        System.out.println("\nCartas restantes no baralho: " + jogo.getCartasRestantes().size());
     }
 }
