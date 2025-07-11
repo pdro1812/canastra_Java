@@ -1,24 +1,24 @@
 package com.pedro;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class JogoComCoringa extends Jogo {
 
-    private List<Carta> cartas = new ArrayList<>();
-    List<Carta> mao = new ArrayList<>();
 
-    public List<Carta> distribuir(int quantidade) {
-    
-        for (int i = 0; i < quantidade && !cartas.isEmpty(); i++) {
-            mao.add(cartas.remove(0));
-        }
-        return mao;
+    public JogoComCoringa(int quantidade, List<Jogador> jogadores) {
+        super(quantidade, jogadores);
     }
 
-    public List<Carta> getCartasRestantes() {
-        return cartas;
+
+    @Override
+    public  void embaralhar()
+    {
+        Collections.shuffle(cartas);
     }
+
+
 
 
     @Override
@@ -51,14 +51,7 @@ public class JogoComCoringa extends Jogo {
         }
 
 
-    public double calcularPontos() {
-        int total = 0;
-        
-        for (Carta c : mao) {
-            total += getAtruiPontuacao(c);
-        }
-        return total;
-    }
+   
 
     
 }

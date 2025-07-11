@@ -12,29 +12,20 @@ public class Main {
             numJogadores = sc.nextInt();
         } while (numJogadores < 1 || numJogadores > 3);
 
-        Baralho baralho = new Baralho();
-        baralho.embaralhar();
 
-        List<Jogador> jogadores = new ArrayList<>();
+            List<Jogador> jogadores = new ArrayList<>();
         for (int i = 1; i <= numJogadores; i++) {
             jogadores.add(new Jogador("Jogador " + i));
         }
 
-        for (Jogador j : jogadores) {
-            j.receberCartas(baralho.distribuir(11));
-        }
+        JogoComCoringa jogoComCoringa = new JogoComCoringa(13, jogadores);
+        jogoComCoringa.embaralhar();
+        jogoComCoringa.distribuir();
 
-        System.out.println("\n--- Cartas dos Jogadores ---");
-        for (Jogador j : jogadores) {
-            j.mostrarCartasCompactas();
-            System.out.println("Pontuação: " + j.getPontos() + "\n");
-        }
+        jogoComCoringa.calcularPontos();
 
-        System.out.println("--- Cartas restantes no baralho ---");
-        for (Carta c : baralho.getCartasRestantes()) {
-            System.out.print(c.getAbreviada() + ", ");
-        }
-        System.out.println();
+        
+        
 
         sc.close();
     }
